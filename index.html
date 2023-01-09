@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time of eating and diaper change</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white text-center">
+    <div>
+        <h3 class="text-xl my-3 font-mono ">ખાવાનો અને ડાઈપર બદલવાનો ટાઈમ </h3>
+        <form id="eat" class=" grid gap-4 mx-16 ">
+            <select name="name" id="name" class="bg-gray-700 text-xl text-center rounded rounded-xl p-2">
+                <option value="આયાંશ">આયાંશ</option>
+                <option value="અનાયા">અનાયા</option>
+            </select>
+            <select name="work" id="work" class=" text-xl bg-gray-700 text-center rounded rounded-xl p-2">
+                <option value="ખવડાવ્યું ">ખવડાવ્યું </option>
+                <option value="ડાયપર ચેન્જ">ડાયપર ચેન્જ</option>
+            </select>
+            <button type="submit"
+                class=" text-2xl text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:border-gray-700">ADD</button>
+        </form>
+    </div>
+    <div class="bg-gray-900 rounded-t-xl mt-5 pt-3 mx-5 flex justify-around  text-2xl">
+        <p>આયાંશ</p>
+        <p>અનાયા</p>
+    </div>
+    <div class=" mx-5 flex justify-center gap-4 rounded rounded-b-xl bg-gray-900 p-2">
+
+        <!-- aayansh -->
+        <ul id="aayansh" class="ml-3 mr-auto  gap-1 w-36 rounded-lg flex flex-col">
+            
+
+
+        </ul>
+        <!-- anaya  -->
+        <ul id="anaya" class=" mr-3 ml-auto gap-1 w-36 rounded-lg flex flex-col">
+           
+
+
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
