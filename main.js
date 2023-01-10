@@ -19,7 +19,7 @@ document.getElementById('eat').addEventListener("submit", (e) => {
     // e.preventDefault();
     let name = document.getElementById('name').value;
     let work = document.getElementById('work').value;
-    let t = new Date().toLocaleTimeString();
+    let t =  new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")
     confirm(`${name} ${work} ${t}`)
     saveMessages(name, work, t)
 })
