@@ -8,7 +8,6 @@ const firebaseConfig = {
     appId: "1:1097272366889:web:d71b3dd6b17f2ba7c80938",
     measurementId: "G-7R3S6Q0XHK"
 };
-
 // to initializeApp 
 firebase.initializeApp(firebaseConfig);
 
@@ -21,22 +20,38 @@ document.getElementById('eat').addEventListener("submit", (e) => {
     let work = document.getElementById('work').value;
     let time = new Date();
     let t = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    confirm(`${name} ${work} ${t}`)
-    saveMessages(name, work, t)
+    //get the todays date
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    const formattedToday = dd + '/' + mm + '/' + yyyy;
+    // console.log(formattedToday);
+
+    // console.log(t);
+    let confirm_data = confirm(`${name} ${work} ${t} ${formattedToday}`)
+    if (confirm_data) {
+        saveMessages(name, work, t, formattedToday)
+    }
+
 })
 
-let saveMessages = (name, work, t) => {
+let saveMessages = (name, work, t, formattedToday) => {
     let newTime = timeofeating.push();
 
     newTime.set({
         name: name,
         work: work,
-        t: t
+        t: t,
+        date: formattedToday
     })
 };
 
 // retrive data from firebase 
-
 timeofeating.on('value', function (snapshot) {
     var data = snapshot.val();
     var ll = Object.values(data);
@@ -53,8 +68,8 @@ timeofeating.on('value', function (snapshot) {
         }
     })
 
-    console.log(aa);
-    console.log(yy);
+    // console.log(aa);
+    // console.log(yy);
     aa = aa.reverse();
     yy = yy.reverse();
     aa.map((e) => {
@@ -62,6 +77,7 @@ timeofeating.on('value', function (snapshot) {
             <li class="bg-gray-800 rounded-lg  p-2 m-1">
                 <p>${e.work}</p>
                 <p>${e.t}</p>
+                <p>${e.date}</p>
             </li>
                 `
         aayansh.innerHTML += html;
@@ -71,6 +87,7 @@ timeofeating.on('value', function (snapshot) {
             <li class="bg-gray-800 rounded-lg  p-2 m-1">
                 <p>${e.work}</p>
                 <p>${e.t}</p>
+                <p>${e.date}</p>
             </li>
                 `
         anaya.innerHTML += html;
